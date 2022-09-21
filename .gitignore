@@ -16,6 +16,7 @@
 .prettierignore
 
 node_modules
+dist
 .prettierignore
 
 README-template.md
