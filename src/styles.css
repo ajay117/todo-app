@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --very-dark-blue: hsl(235, 21%, 11%);
+  --very-dark-desaturated-blue: hsl(235, 24%, 19%);
+  --light-grayish-blue: hsl(234, 39%, 85%);
+  --light-grayish-blue-hover: hsl(236, 33%, 92%);
+  --dark-grayish-blue: hsl(234, 11%, 52%);
+  --very-dark-grayish-blue: hsl(233, 14%, 35%);
+  --very-dark-grayish-blue: hsl(237, 14%, 26%);
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+main {
+  background-color: var(--light-grayish-blue-hover);
+  min-height: 100vh;
+}
+
+main section,
+main > div {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+input,
+.todo__status,
+.todo__list {
+  border-radius: 0.7rem;
+}
+
+section {
+  background-image: url('../images/bg-mobile-light.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2rem 0 4rem;
+}
+
+h1 {
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+}
+
+section input {
+  width: 100%;
+  padding: 1.5rem 4rem;
+  border-style: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo__status {
+  padding: 1.5rem;
+  text-align: center;
+  margin-top: 2rem;
+  background-color: #ffffff;
+}
+
+.todo__status a {
+  margin-right: 2rem;
+  text-decoration: none;
+}
+
+.todo__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: -27px;
+  background-color: #ffffff;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem 0.1rem;
+  border-bottom: 0.1rem solid;
+  font-size: 1.4rem;
+}
+
+.circle {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 18px;
+}
+
+.completed {
+  background-image: url('../images/bg-mobile-light.jpg');
+  background-position: top right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.close-icon {
+  width: 14px;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+.hide {
+  display: none;
+}

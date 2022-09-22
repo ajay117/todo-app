@@ -8,37 +8,62 @@
     <title>Frontend Mentor | Todo app</title>
 
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style>
-      .attribution {
-        font-size: 11px;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
   </head>
   <body>
     <main>
       <section>
-        <h1>Todo</h1>
+        <header>
+          <h1>TODO</h1>
+          <img src="../images/icon-moon.svg" alt="moon icon" />
+        </header>
+
         <input type="text" placeholder="Create a new todo..." />
       </section>
 
       <div>
-        <div class="to-do-list"></div>
+        <ul class="todo__list">
+          <li>
+            <span class="circle completed">
+              <img src="../images/icon-check.svg" alt="" />
+            </span>
+
+            <p>Complete Online Javascript Course</p>
+            <img class="close-icon" src="../images/icon-cross.svg" alt="" />
+          </li>
+          <li>
+            <span class="circle"></span>
+            <p>Complete React</p>
+            <img class="close-icon" src="../images/icon-cross.svg" alt="" />
+          </li>
+          <li>
+            <span class="circle"></span>
+            <p>Pick up groceries</p>
+            <img class="close-icon" src="../images/icon-cross.svg" alt="" />
+          </li>
+          <li>
+            <span class="circle"></span>
+            <p>Complete Online Javascript Course</p>
+            <img class="close-icon" src="../images/icon-cross.svg" alt="" />
+          </li>
+          <li>
+            <span class="circle"></span>
+            <p>Complete Online Javascript Course</p>
+            <img class="close-icon" src="../images/icon-cross.svg" alt="" />
+          </li>
+        </ul>
+
         <!-- Below div will hold total number of to do to complete and "clear completed" option
       <div></div> -->
 
-        <div class="to-do__status">
+        <div class="todo__status">
           <a href="#">All</a><a href="#">Active</a><a href="#">Completed</a>
         </div>
       </div>
 
-      <div>Drag and drop to reorder list</div>
+      <div class="hide">Drag and drop to reorder list</div>
     </main>
 
-    <div class="attribution">
+    <div class="attribution hide">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
