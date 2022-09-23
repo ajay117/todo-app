@@ -2,6 +2,29 @@ import './styles.css'
 
 const form = document.querySelector('form')
 
+// code when a todo is complete
+const todoCompleteCheck = () => {
+  const allSpanArr = [...document.querySelectorAll('span')]
+  allSpanArr.forEach((span) => {
+    span.addEventListener('click', () => {
+      const img = document.createElement('img')
+      const siblingPara = span.nextElementSibling
+      if (!span.classList.contains('completed')) {
+        span.classList.add('completed')
+
+        img.setAttribute('src', '../images/icon-check.svg')
+        img.setAttribute('alt', '')
+
+        span.appendChild(img)
+        siblingPara.classList.add('todo__complete')
+      } else {
+        span.classList.remove('completed')
+        siblingPara.classList.remove('todo__complete')
+      }
+    })
+  })
+}
+
 form.addEventListener('submit', (e) => {
   e.preventDefault()
 
@@ -28,5 +51,6 @@ form.addEventListener('submit', (e) => {
 
   ul.appendChild(li)
 
-  input.value = '';
+  input.value = ''
+  todoCompleteCheck()
 })
