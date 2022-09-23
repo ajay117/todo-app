@@ -1,12 +1,25 @@
 import './styles.css'
 
 const form = document.querySelector('form')
+let toDoList = document.querySelector('.todo__list')
+
+// Code to know and render how many items are left
+const displayRemainingTODo = () => {
+  const li = [...document.querySelectorAll('li')]
+  const completedClass = document.querySelectorAll('.completed')
+  const itemsLeft = document.querySelector('.items__left')
+  const remainingToDo = li.length - completedClass.length
+  itemsLeft.textContent =
+    remainingToDo > 1 ? `${remainingToDo} items` : `${remainingToDo} item`
+}
 
 // code when a todo is complete
 const todoCompleteCheck = () => {
-  const allSpanArr = [...document.querySelectorAll('span')]
+  const allSpanArr = [...document.querySelectorAll('li span')]
+
   allSpanArr.forEach((span) => {
-    span.addEventListener('click', () => {
+    const checkLogic = () => {
+      console.log(span)
       const img = document.createElement('img')
       const siblingPara = span.nextElementSibling
       if (!span.classList.contains('completed')) {
@@ -21,8 +34,14 @@ const todoCompleteCheck = () => {
         span.classList.remove('completed')
         siblingPara.classList.remove('todo__complete')
       }
-    })
+    }
+
+    if (!span.getAttribute('data-listener')) {
+      span.addEventListener('click', checkLogic)
+      span.setAttribute('data-listener', true)
+    }
   })
+  displayRemainingTODo()
 }
 
 form.addEventListener('submit', (e) => {
@@ -53,4 +72,5 @@ form.addEventListener('submit', (e) => {
 
   input.value = ''
   todoCompleteCheck()
+  displayRemainingTODo()
 })
