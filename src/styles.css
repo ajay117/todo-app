@@ -154,6 +154,11 @@ li span {
   width: 14px;
 }
 
+.todo__complete {
+  text-decoration: line-through;
+  color: var(--light-grayish-blue)
+}
+
 a.active {
   color: #4b7cdf;
 }
