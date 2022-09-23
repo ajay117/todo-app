@@ -84,13 +84,6 @@ header {
   font-weight: 700;
 }
 
-.todo__info,
-.todo__info a,
-.info {
-  color: var(--light-grayish-blue);
-  text-decoration: none;
-}
-
 .todo__list {
   list-style-type: none;
   margin: 0;
@@ -100,7 +93,8 @@ header {
   background-color: #ffffff;
 }
 
-li {
+li,
+.todo__info {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -113,6 +107,13 @@ li {
 li,
 input {
   color: var(--dark-grayish-blue);
+}
+
+.todo__info,
+.todo__info a,
+.info {
+  color: var(--light-grayish-blue);
+  text-decoration: none;
 }
 
 .info {
