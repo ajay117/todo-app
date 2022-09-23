@@ -85,7 +85,8 @@ header {
 }
 
 .todo__info,
-.todo__info a {
+.todo__info a,
+.info {
   color: var(--light-grayish-blue);
   text-decoration: none;
 }
@@ -112,6 +113,13 @@ li {
 li,
 input {
   color: var(--dark-grayish-blue);
+}
+
+.info {
+  color: var(--dark-grayish-blue);
+  text-align: center;
+  padding: 1.5rem 0;
+  margin-top: 3rem;
 }
 
 li > div {
