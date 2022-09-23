@@ -26,6 +26,13 @@ body {
   margin: 0;
 }
 
+h1 {
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+  color: #ffffff;
+  font-weight: 400;
+}
+
 main {
   background-color: var(--light-grayish-blue-hover);
   min-height: 100vh;
@@ -51,11 +58,6 @@ section {
   padding: 2rem 0 4rem;
 }
 
-h1 {
-  font-size: 3rem;
-  letter-spacing: 0.5rem;
-}
-
 section input {
   width: 100%;
   padding: 1.5rem 4rem;
@@ -78,6 +80,14 @@ header {
 .todo__status a {
   margin-right: 2rem;
   text-decoration: none;
+  color: var(--dark-grayish-blue);
+  font-weight: 700;
+}
+
+.todo__info,
+.todo__info a {
+  color: var(--light-grayish-blue);
+  text-decoration: none;
 }
 
 .todo__list {
@@ -93,9 +103,25 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 3rem 0.1rem;
+  padding: 0.5rem 3rem 0.5rem;
   border-bottom: 0.1rem solid;
   font-size: 1.4rem;
+  color: var(--dark-grayish-blue);
+}
+
+li,
+input {
+  color: var(--dark-grayish-blue);
+}
+
+li > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+li span {
+  margin-right: 10px;
 }
 
 .circle {
@@ -117,6 +143,14 @@ li {
 
 .close-icon {
   width: 14px;
+}
+
+a.active {
+  color: #4b7cdf;
+}
+
+.mr-10 {
+  margin-right: 10px;
 }
 
 .attribution {
