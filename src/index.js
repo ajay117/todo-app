@@ -1,4 +1,7 @@
 import './styles.css'
+import checkIcon from '../images/icon-check.svg'
+import moonIcon from '../images/icon-moon.svg'
+import sunIcon from '../images/icon-sun.svg'
 
 const form = document.querySelector('form')
 const clearCompletedBtn = document.querySelector('.js-clear-completed')
@@ -7,6 +10,11 @@ const activeToDo = document.querySelector('.active__todo')
 const completedToDo = document.querySelector('.completed__todo')
 const darkTheme = document.querySelector('#theme__dark')
 const lightTheme = document.querySelector('#theme__light')
+const moonImage  = document.querySelector('#theme__dark')
+const sunImage  = document.querySelector('#theme__light')
+
+moonImage.setAttribute('src', moonIcon)
+sunImage.setAttribute('src', sunIcon)
 
 // Code to know and render how many items are left
 const displayRemainingTODo = () => {
@@ -29,7 +37,7 @@ const todoCompleteCheck = () => {
         const siblingPara = span.nextElementSibling
         span.classList.add('completed')
 
-        img.setAttribute('src', '../images/icon-check.svg')
+        img.setAttribute('src', checkIcon)
         img.setAttribute('alt', '')
 
         span.appendChild(img)
@@ -173,7 +181,6 @@ darkTheme.addEventListener('click', () => {
   const todoStatus = document.querySelector('.todo__status')
   const input = document.querySelector('input')
   const circleArr = [...document.querySelectorAll('.circle')]
-  console.log(circleArr)
 
   circleArr.forEach((circle) => {
     circle.addEventListener('mousedown', (e) => {
