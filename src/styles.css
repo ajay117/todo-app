@@ -24,19 +24,23 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1.8rem;
   margin: 0;
+  background-color: var(--light-grayish-blue-hover);
 }
 
 h1 {
   font-size: 3rem;
   letter-spacing: 0.5rem;
   color: #ffffff;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 main {
   max-width: 700px;
   min-height: 100vh;
-  background-color: var(--light-grayish-blue-hover);
+  margin: 0 auto;
+  /* background-color: var(--light-grayish-blue-hover); */
+  position: relative;
+  top: -180px;
 }
 
 main section,
@@ -51,12 +55,21 @@ input,
   border-radius: 0.7rem;
 }
 
-section {
+.bg__banner {
   background-image: url('../images/bg-mobile-light.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 2rem 0 4rem;
+  width: 100%;
+  height: 20rem;
+}
+
+section {
+  /* background-image: url('../images/bg-mobile-light.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  padding: 2rem 0;
 }
 
 section input {
@@ -89,8 +102,8 @@ header {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  position: relative;
-  top: -27px;
+  /* position: relative;
+  top: -27px; */
   background-color: #ffffff;
 }
 
@@ -146,6 +159,10 @@ li span {
   text-align: center;
   font-size: 18px;
   cursor: pointer;
+}
+
+.circle:active {
+  border-color: var(--very-dark-grayish-blue)
 }
 
 .completed {

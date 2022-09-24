@@ -6,6 +6,7 @@ const allToDo = document.querySelector('#all__todo')
 const activeToDo = document.querySelector('#active__todo')
 const completedToDo = document.querySelector('#completed__todo')
 const darkTheme = document.querySelector('#theme__dark')
+const lightTheme = document.querySelector('#theme__light')
 
 // Code to know and render how many items are left
 const displayRemainingTODo = () => {
@@ -75,6 +76,15 @@ form.addEventListener('submit', (e) => {
 
   span.classList.add('circle')
   para.textContent = input.value
+
+  if (document.querySelector('#theme__dark').classList.contains('hide')) {
+    span.addEventListener('mousedown', () => {
+      span.style.borderColor = 'yellow'
+    })
+    span.addEventListener('mouseup', () => {
+      span.style.borderColor = ''
+    })
+  }
 
   div.appendChild(span)
   div.appendChild(para)
@@ -153,17 +163,52 @@ allToDo.addEventListener('click', () => {
 
 // Dark theme
 darkTheme.addEventListener('click', () => {
-  const main = document.querySelector('main')
+  document.querySelector('#theme__dark').classList.add('hide')
+  document.querySelector('#theme__light').classList.remove('hide')
+
+  const body = document.querySelector('body')
   const toDoList = document.querySelector('.todo__list')
   const toDoInfo = document.querySelector('.todo__info')
   const toDoInfoLink = document.querySelector('.todo__info a')
-  // const info = document.querySelector('.info')
   const todoStatus = document.querySelector('.todo__status')
+  const input = document.querySelector('input')
+  const circleArr = [...document.querySelectorAll('.circle')]
+  console.log(circleArr)
 
-  main.style.backgroundColor = 'hsl(235, 21%, 11%)'
+  circleArr.forEach((circle) => {
+    circle.addEventListener('mousedown', (e) => {
+      e.target.style.borderColor = 'hsl(234, 39%, 85%)'
+    })
+    circle.addEventListener('mouseup', (e) => {
+      e.target.style.borderColor = ''
+    })
+  })
+
+  body.style.backgroundColor = 'hsl(235, 21%, 11%)'
   toDoList.style.backgroundColor = 'hsl(235, 24%, 19%)'
   toDoInfo.style.backgroundColor = 'hsl(235, 24%, 19%)'
   todoStatus.style.backgroundColor = 'hsl(235, 24%, 19%)'
   toDoInfo.style.color = ' hsl(234, 11%, 52%)'
   toDoInfoLink.style.color = ' hsl(234, 11%, 52%)'
+  input.style.backgroundColor = 'hsl(235, 24%, 19%)'
+})
+
+lightTheme.addEventListener('click', () => {
+  document.querySelector('#theme__light').classList.add('hide')
+  document.querySelector('#theme__dark').classList.remove('hide')
+
+  const body = document.querySelector('body')
+  const toDoList = document.querySelector('.todo__list')
+  const toDoInfo = document.querySelector('.todo__info')
+  const toDoInfoLink = document.querySelector('.todo__info a')
+  const todoStatus = document.querySelector('.todo__status')
+  const input = document.querySelector('input')
+
+  body.style.backgroundColor = ''
+  toDoList.style.backgroundColor = ''
+  toDoInfo.style.backgroundColor = ''
+  todoStatus.style.backgroundColor = ''
+  toDoInfo.style.color = ''
+  toDoInfoLink.style.color = ''
+  input.style.backgroundColor = ''
 })
