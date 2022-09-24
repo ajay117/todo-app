@@ -18,8 +18,8 @@ const todoCompleteCheck = () => {
   const allSpanArr = [...document.querySelectorAll('li span')]
 
   allSpanArr.forEach((span) => {
-    const checkLogic = () => {
-      console.log(span)
+    
+    const checkToDo = () => {
       const img = document.createElement('img')
       const siblingPara = span.nextElementSibling
       if (!span.classList.contains('completed')) {
@@ -37,7 +37,7 @@ const todoCompleteCheck = () => {
     }
 
     if (!span.getAttribute('data-listener')) {
-      span.addEventListener('click', checkLogic)
+      span.addEventListener('click', checkToDo)
       span.setAttribute('data-listener', true)
     }
   })
