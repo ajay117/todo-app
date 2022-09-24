@@ -105,6 +105,10 @@ li,
   color: var(--dark-grayish-blue);
 }
 
+.todo__info {
+  border: none;
+}
+
 li,
 input {
   color: var(--dark-grayish-blue);

@@ -5,6 +5,7 @@ const clearCompletedBtn = document.querySelector('.js-clear-completed')
 const allToDo = document.querySelector('#all__todo')
 const activeToDo = document.querySelector('#active__todo')
 const completedToDo = document.querySelector('#completed__todo')
+const darkTheme = document.querySelector('#theme__dark')
 
 // Code to know and render how many items are left
 const displayRemainingTODo = () => {
@@ -22,9 +23,9 @@ const todoCompleteCheck = () => {
 
   allSpanArr.forEach((span) => {
     const checkToDo = () => {
-      const img = document.createElement('img')
-      const siblingPara = span.nextElementSibling
       if (!span.classList.contains('completed')) {
+        const img = document.createElement('img')
+        const siblingPara = span.nextElementSibling
         span.classList.add('completed')
 
         img.setAttribute('src', '../images/icon-check.svg')
@@ -33,7 +34,12 @@ const todoCompleteCheck = () => {
         span.appendChild(img)
         siblingPara.classList.add('todo__complete')
       } else {
+        const img = span.querySelector('img')
+        const siblingPara = span.nextElementSibling
+
         span.classList.remove('completed')
+        span.removeChild(img)
+
         siblingPara.classList.remove('todo__complete')
       }
     }
@@ -143,4 +149,21 @@ allToDo.addEventListener('click', () => {
   completedToDo.classList.remove('active')
 
   showList()
+})
+
+// Dark theme
+darkTheme.addEventListener('click', () => {
+  const main = document.querySelector('main')
+  const toDoList = document.querySelector('.todo__list')
+  const toDoInfo = document.querySelector('.todo__info')
+  const toDoInfoLink = document.querySelector('.todo__info a')
+  // const info = document.querySelector('.info')
+  const todoStatus = document.querySelector('.todo__status')
+
+  main.style.backgroundColor = 'hsl(235, 21%, 11%)'
+  toDoList.style.backgroundColor = 'hsl(235, 24%, 19%)'
+  toDoInfo.style.backgroundColor = 'hsl(235, 24%, 19%)'
+  todoStatus.style.backgroundColor = 'hsl(235, 24%, 19%)'
+  toDoInfo.style.color = ' hsl(234, 11%, 52%)'
+  toDoInfoLink.style.color = ' hsl(234, 11%, 52%)'
 })
