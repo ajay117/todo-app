@@ -2,6 +2,9 @@ import './styles.css'
 
 const form = document.querySelector('form')
 const clearCompletedBtn = document.querySelector('.js-clear-completed')
+const allToDo = document.querySelector('#all__todo')
+const activeToDo = document.querySelector('#active__todo')
+const completedToDo = document.querySelector('#completed__todo')
 
 // Code to know and render how many items are left
 const displayRemainingTODo = () => {
@@ -44,6 +47,15 @@ const todoCompleteCheck = () => {
   displayRemainingTODo()
 }
 
+// Remove hide class from list
+const showList = () => {
+  const allSpanArr = [...document.querySelectorAll('li span')]
+  allSpanArr.forEach((span) => {
+    span.parentElement.parentElement.classList.remove('hide')
+  })
+}
+
+// Runs on form submit
 form.addEventListener('submit', (e) => {
   e.preventDefault()
 
@@ -68,6 +80,7 @@ form.addEventListener('submit', (e) => {
   img.addEventListener('click', () => {
     const toDoList = document.querySelector('.todo__list')
     toDoList.removeChild(img.parentElement)
+    displayRemainingTODo()
   })
 
   li.appendChild(div)
@@ -76,8 +89,14 @@ form.addEventListener('submit', (e) => {
   ul.appendChild(li)
 
   input.value = ''
+
+  allToDo.classList.add('active')
+  activeToDo.classList.remove('active')
+  completedToDo.classList.remove('active')
+
   todoCompleteCheck()
   displayRemainingTODo()
+  showList()
 })
 
 clearCompletedBtn.addEventListener('click', () => {
@@ -86,4 +105,42 @@ clearCompletedBtn.addEventListener('click', () => {
     const toDoList = document.querySelector('.todo__list')
     toDoList.removeChild(todo.parentElement.parentElement)
   })
+})
+
+activeToDo.addEventListener('click', () => {
+  activeToDo.classList.add('active')
+  allToDo.classList.remove('active')
+  completedToDo.classList.remove('active')
+
+  const allSpanArr = [...document.querySelectorAll('li span')]
+  allSpanArr.forEach((span) => {
+    if (span.classList.contains('completed')) {
+      span.parentElement.parentElement.classList.add('hide')
+    } else {
+      span.parentElement.parentElement.classList.remove('hide')
+    }
+  })
+})
+
+completedToDo.addEventListener('click', () => {
+  completedToDo.classList.add('active')
+  allToDo.classList.remove('active')
+  activeToDo.classList.remove('active')
+
+  const allSpanArr = [...document.querySelectorAll('li span')]
+  allSpanArr.forEach((span) => {
+    if (span.classList.contains('completed')) {
+      span.parentElement.parentElement.classList.remove('hide')
+    } else {
+      span.parentElement.parentElement.classList.add('hide')
+    }
+  })
+})
+
+allToDo.addEventListener('click', () => {
+  allToDo.classList.add('active')
+  activeToDo.classList.remove('active')
+  completedToDo.classList.remove('active')
+
+  showList()
 })
