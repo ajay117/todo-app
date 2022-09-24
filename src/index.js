@@ -1,7 +1,8 @@
 import './styles.css'
 
 const form = document.querySelector('form')
-let toDoList = document.querySelector('.todo__list')
+
+const closeIcons = [...document.querySelectorAll('.close-icon')]
 
 // Code to know and render how many items are left
 const displayRemainingTODo = () => {
@@ -18,7 +19,6 @@ const todoCompleteCheck = () => {
   const allSpanArr = [...document.querySelectorAll('li span')]
 
   allSpanArr.forEach((span) => {
-    
     const checkToDo = () => {
       const img = document.createElement('img')
       const siblingPara = span.nextElementSibling
@@ -38,6 +38,7 @@ const todoCompleteCheck = () => {
 
     if (!span.getAttribute('data-listener')) {
       span.addEventListener('click', checkToDo)
+      span.addEventListener('click', displayRemainingTODo)
       span.setAttribute('data-listener', true)
     }
   })
@@ -64,6 +65,11 @@ form.addEventListener('submit', (e) => {
   img.setAttribute('src', '../images/icon-cross.svg')
   img.setAttribute('alt', '')
   img.classList.add('close-icon')
+
+  img.addEventListener('click', () => {
+    const toDoList = document.querySelector('.todo__list')
+    toDoList.removeChild(img.parentElement)
+  })
 
   li.appendChild(div)
   li.appendChild(img)
