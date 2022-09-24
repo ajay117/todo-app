@@ -2,9 +2,9 @@ import './styles.css'
 
 const form = document.querySelector('form')
 const clearCompletedBtn = document.querySelector('.js-clear-completed')
-const allToDo = document.querySelector('#all__todo')
-const activeToDo = document.querySelector('#active__todo')
-const completedToDo = document.querySelector('#completed__todo')
+const allToDo = document.querySelector('.all__todo')
+const activeToDo = document.querySelector('.active__todo')
+const completedToDo = document.querySelector('.completed__todo')
 const darkTheme = document.querySelector('#theme__dark')
 const lightTheme = document.querySelector('#theme__light')
 
@@ -211,4 +211,25 @@ lightTheme.addEventListener('click', () => {
   toDoInfo.style.color = ''
   toDoInfoLink.style.color = ''
   input.style.backgroundColor = ''
+})
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.innerWidth > 800) {
+    const todoStatus = document.querySelector('.todo__status')
+    const sibling = document.querySelector('.js-place-after')
+    sibling.after(todoStatus)
+  }
+})
+
+window.addEventListener('resize', () => {
+  // console.log(window.innerWidth)
+  if (window.innerWidth > 800) {
+    const todoStatus = document.querySelector('.todo__status')
+    const sibling = document.querySelector('.js-place-after')
+    sibling.after(todoStatus)
+  } else {
+    const sibling = document.querySelector('.todo__info')
+    const todoStatus = document.querySelector('.todo__status')
+    sibling.parentElement.appendChild(todoStatus)
+  }
 })

@@ -91,6 +91,13 @@ header {
   background-color: #ffffff;
 }
 
+.todo__info .todo__status {
+  padding: 0;
+  margin: 0;
+  background-color: none;
+  /* display: none; */
+}
+
 .todo__status a {
   margin-right: 2rem;
   text-decoration: none;
@@ -130,7 +137,7 @@ input {
 .todo__info,
 .todo__info a,
 .info {
-  color: var(--light-grayish-blue);
+  color: var(--dark-grayish-blue);
   text-decoration: none;
 }
 
@@ -162,7 +169,7 @@ li span {
 }
 
 .circle:active {
-  border-color: var(--very-dark-grayish-blue)
+  border-color: var(--very-dark-grayish-blue);
 }
 
 .completed {
