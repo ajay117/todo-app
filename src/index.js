@@ -79,7 +79,7 @@ form.addEventListener('submit', (e) => {
 
   if (document.querySelector('#theme__dark').classList.contains('hide')) {
     span.addEventListener('mousedown', () => {
-      span.style.borderColor = 'yellow'
+      span.style.borderColor = 'hsl(234, 39%, 85%)'
     })
     span.addEventListener('mouseup', () => {
       span.style.borderColor = ''
