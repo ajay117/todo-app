@@ -1,8 +1,7 @@
 import './styles.css'
 
 const form = document.querySelector('form')
-
-const closeIcons = [...document.querySelectorAll('.close-icon')]
+const clearCompletedBtn = document.querySelector('.js-clear-completed')
 
 // Code to know and render how many items are left
 const displayRemainingTODo = () => {
@@ -79,4 +78,12 @@ form.addEventListener('submit', (e) => {
   input.value = ''
   todoCompleteCheck()
   displayRemainingTODo()
+})
+
+clearCompletedBtn.addEventListener('click', () => {
+  const completedToDos = [...document.querySelectorAll('.completed')]
+  completedToDos.forEach((todo) => {
+    const toDoList = document.querySelector('.todo__list')
+    toDoList.removeChild(todo.parentElement.parentElement)
+  })
 })
