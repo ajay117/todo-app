@@ -4,105 +4,20 @@ import sunIcon from '../images/icon-sun.svg'
 import displayRemainingToDo from './modules/displayRemainingToDo'
 import todoCompleteCheck from './modules/todoCompleteCheck'
 import iconCross from '../images/icon-cross.svg'
+import elemObj from './modules/elemObj'
+import showList from './modules/showList'
+import toDoArr from './modules/toDoArr'
+import addToDo from './modules/addToDo'
 
-const toDoArr = JSON.parse(localStorage.getItem('to-do-list')) || []
-const elemObj = (() => {
-  const form = document.querySelector('form')
-  const clearCompletedBtn = document.querySelector('.js-clear-completed')
-  const allToDo = document.querySelector('.all__todo')
-  const activeToDo = document.querySelector('.active__todo')
-  const completedToDo = document.querySelector('.completed__todo')
-  const darkTheme = document.querySelector('#theme__dark')
-  const lightTheme = document.querySelector('#theme__light')
-  const moonImage = document.querySelector('#theme__dark')
-  const sunImage = document.querySelector('#theme__light')
 
-  return {
-    form,
-    clearCompletedBtn,
-    allToDo,
-    activeToDo,
-    completedToDo,
-    darkTheme,
-    lightTheme,
-    moonImage,
-    sunImage,
-  }
-})()
-
-elemObj.moonImage.setAttribute('src', moonIcon)
-elemObj.sunImage.setAttribute('src', sunIcon)
-
-// Remove hide class from list
-const showList = () => {
-  const allSpanArr = [...document.querySelectorAll('li span')]
-  allSpanArr.forEach((span) => {
-    span.parentElement.parentElement.classList.remove('hide')
-  })
-}
+elemObj().moonImage.setAttribute('src', moonIcon)
+elemObj().sunImage.setAttribute('src', sunIcon)
 
 window.addEventListener('DOMContentLoaded', () => {
   if (window.innerWidth > 800) {
     const todoStatus = document.querySelector('.todo__status')
     const sibling = document.querySelector('.js-place-after')
     sibling.after(todoStatus)
-  }
-
-  function addToDo(todoStr, index) {
-    // const input = document.querySelector('input')
-    const ul = document.querySelector('ul')
-    const div = document.createElement('div')
-    const li = document.createElement('li')
-    const span = document.createElement('span')
-    const para = document.createElement('p')
-    const img = document.createElement('img')
-
-    span.classList.add('circle')
-    para.textContent = todoStr
-
-    // Push to array and save in localStorage
-    // toDoArr.push(input.value)
-    // localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
-
-    if (document.querySelector('#theme__dark').classList.contains('hide')) {
-      span.addEventListener('mousedown', () => {
-        span.style.borderColor = 'hsl(234, 39%, 85%)'
-      })
-      span.addEventListener('mouseup', () => {
-        span.style.borderColor = ''
-      })
-    }
-
-    div.appendChild(span)
-    div.appendChild(para)
-
-    img.setAttribute('src', iconCross)
-    img.setAttribute('alt', '')
-    img.classList.add('close-icon')
-
-    img.addEventListener('click', () => {
-      const toDoList = document.querySelector('.todo__list')
-      toDoList.removeChild(img.parentElement)
-      toDoArr.splice(index, 1)
-      localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
-      displayRemainingToDo()
-    })
-
-    li.appendChild(div)
-    li.appendChild(img)
-    li.setAttribute('draggable', true)
-
-    ul.appendChild(li)
-
-    // input.value = ''
-
-    elemObj.allToDo.classList.add('active')
-    elemObj.activeToDo.classList.remove('active')
-    elemObj.completedToDo.classList.remove('active')
-
-    todoCompleteCheck()
-    displayRemainingToDo()
-    showList()
   }
 
   toDoArr.forEach((todo) => addToDo(todo))
@@ -122,7 +37,7 @@ window.addEventListener('resize', () => {
 })
 
 // Runs on form submit
-elemObj.form.addEventListener('submit', (e) => {
+elemObj().form.addEventListener('submit', (e) => {
   e.preventDefault()
 
   const input = document.querySelector('input')
@@ -132,7 +47,7 @@ elemObj.form.addEventListener('submit', (e) => {
   const span = document.createElement('span')
   const para = document.createElement('p')
   const img = document.createElement('img')
-  const index = toDoArr.length;
+  const index = toDoArr.length
 
   span.classList.add('circle')
   para.textContent = input.value
@@ -173,16 +88,16 @@ elemObj.form.addEventListener('submit', (e) => {
 
   input.value = ''
 
-  elemObj.allToDo.classList.add('active')
-  elemObj.activeToDo.classList.remove('active')
-  elemObj.completedToDo.classList.remove('active')
+  elemObj().allToDo.classList.add('active')
+  elemObj().activeToDo.classList.remove('active')
+  elemObj().completedToDo.classList.remove('active')
 
   todoCompleteCheck()
   displayRemainingToDo()
   showList()
 })
 
-elemObj.clearCompletedBtn.addEventListener('click', () => {
+elemObj().clearCompletedBtn.addEventListener('click', () => {
   const completedToDos = [...document.querySelectorAll('.completed')]
   completedToDos.forEach((todo) => {
     const toDoList = document.querySelector('.todo__list')
@@ -190,10 +105,10 @@ elemObj.clearCompletedBtn.addEventListener('click', () => {
   })
 })
 
-elemObj.activeToDo.addEventListener('click', () => {
-  elemObj.activeToDo.classList.add('active')
-  elemObj.allToDo.classList.remove('active')
-  elemObj.completedToDo.classList.remove('active')
+elemObj().activeToDo.addEventListener('click', () => {
+  elemObj().activeToDo.classList.add('active')
+  elemObj().allToDo.classList.remove('active')
+  elemObj().completedToDo.classList.remove('active')
 
   const allSpanArr = [...document.querySelectorAll('li span')]
   allSpanArr.forEach((span) => {
@@ -205,10 +120,10 @@ elemObj.activeToDo.addEventListener('click', () => {
   })
 })
 
-elemObj.completedToDo.addEventListener('click', () => {
-  elemObj.completedToDo.classList.add('active')
-  elemObj.allToDo.classList.remove('active')
-  elemObj.activeToDo.classList.remove('active')
+elemObj().completedToDo.addEventListener('click', () => {
+  elemObj().completedToDo.classList.add('active')
+  elemObj().allToDo.classList.remove('active')
+  elemObj().activeToDo.classList.remove('active')
 
   const allSpanArr = [...document.querySelectorAll('li span')]
   allSpanArr.forEach((span) => {
@@ -220,16 +135,16 @@ elemObj.completedToDo.addEventListener('click', () => {
   })
 })
 
-elemObj.allToDo.addEventListener('click', () => {
-  elemObj.allToDo.classList.add('active')
-  elemObj.activeToDo.classList.remove('active')
-  elemObj.completedToDo.classList.remove('active')
+elemObj().allToDo.addEventListener('click', () => {
+  elemObj().allToDo.classList.add('active')
+  elemObj().activeToDo.classList.remove('active')
+  elemObj().completedToDo.classList.remove('active')
 
   showList()
 })
 
 // ------------Themes------------
-elemObj.darkTheme.addEventListener('click', () => {
+elemObj().darkTheme.addEventListener('click', () => {
   document.querySelector('#theme__dark').classList.add('hide')
   document.querySelector('#theme__light').classList.remove('hide')
 
@@ -259,7 +174,7 @@ elemObj.darkTheme.addEventListener('click', () => {
   input.style.backgroundColor = 'hsl(235, 24%, 19%)'
 })
 
-elemObj.lightTheme.addEventListener('click', () => {
+elemObj().lightTheme.addEventListener('click', () => {
   document.querySelector('#theme__light').classList.add('hide')
   document.querySelector('#theme__dark').classList.remove('hide')
 
