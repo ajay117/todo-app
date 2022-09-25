@@ -6,7 +6,6 @@ import elemObj from './elemObj'
 import toDoArr from './toDoArr'
 
 const addToDo = (todoStr, index) => {
-  // const input = document.querySelector('input')
   const ul = document.querySelector('ul')
   const div = document.createElement('div')
   const li = document.createElement('li')
@@ -16,10 +15,6 @@ const addToDo = (todoStr, index) => {
 
   span.classList.add('circle')
   para.textContent = todoStr
-
-  // Push to array and save in localStorage
-  // toDoArr.push(input.value)
-  // localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
 
   if (document.querySelector('#theme__dark').classList.contains('hide')) {
     span.addEventListener('mousedown', () => {
@@ -50,8 +45,6 @@ const addToDo = (todoStr, index) => {
   li.setAttribute('draggable', true)
 
   ul.appendChild(li)
-
-  // input.value = ''
 
   elemObj().allToDo.classList.add('active')
   elemObj().activeToDo.classList.remove('active')
