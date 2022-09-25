@@ -3,7 +3,9 @@ import moonIcon from '../images/icon-moon.svg'
 import sunIcon from '../images/icon-sun.svg'
 import displayRemainingToDo from './modules/displayRemainingToDo'
 import todoCompleteCheck from './modules/todoCompleteCheck'
+import iconCross from '../images/icon-cross.svg'
 
+const toDoArr = JSON.parse(localStorage.getItem('to-do-list')) || []
 const elemObj = (() => {
   const form = document.querySelector('form')
   const clearCompletedBtn = document.querySelector('.js-clear-completed')
@@ -45,6 +47,65 @@ window.addEventListener('DOMContentLoaded', () => {
     const sibling = document.querySelector('.js-place-after')
     sibling.after(todoStatus)
   }
+
+  function addToDo(todoStr, index) {
+    // const input = document.querySelector('input')
+    const ul = document.querySelector('ul')
+    const div = document.createElement('div')
+    const li = document.createElement('li')
+    const span = document.createElement('span')
+    const para = document.createElement('p')
+    const img = document.createElement('img')
+
+    span.classList.add('circle')
+    para.textContent = todoStr
+
+    // Push to array and save in localStorage
+    // toDoArr.push(input.value)
+    // localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
+
+    if (document.querySelector('#theme__dark').classList.contains('hide')) {
+      span.addEventListener('mousedown', () => {
+        span.style.borderColor = 'hsl(234, 39%, 85%)'
+      })
+      span.addEventListener('mouseup', () => {
+        span.style.borderColor = ''
+      })
+    }
+
+    div.appendChild(span)
+    div.appendChild(para)
+
+    img.setAttribute('src', iconCross)
+    img.setAttribute('alt', '')
+    img.classList.add('close-icon')
+
+    img.addEventListener('click', () => {
+      const toDoList = document.querySelector('.todo__list')
+      toDoList.removeChild(img.parentElement)
+      toDoArr.splice(index, 1)
+      localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
+      displayRemainingToDo()
+    })
+
+    li.appendChild(div)
+    li.appendChild(img)
+    li.setAttribute('draggable', true)
+
+    ul.appendChild(li)
+
+    // input.value = ''
+
+    elemObj.allToDo.classList.add('active')
+    elemObj.activeToDo.classList.remove('active')
+    elemObj.completedToDo.classList.remove('active')
+
+    todoCompleteCheck()
+    displayRemainingToDo()
+    showList()
+  }
+
+  toDoArr.forEach((todo) => addToDo(todo))
 })
 
 window.addEventListener('resize', () => {
@@ -71,9 +132,14 @@ elemObj.form.addEventListener('submit', (e) => {
   const span = document.createElement('span')
   const para = document.createElement('p')
   const img = document.createElement('img')
+  const index = toDoArr.length;
 
   span.classList.add('circle')
   para.textContent = input.value
+
+  // Push to array and save in localStorage
+  toDoArr.push(input.value)
+  localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
 
   if (document.querySelector('#theme__dark').classList.contains('hide')) {
     span.addEventListener('mousedown', () => {
@@ -87,13 +153,15 @@ elemObj.form.addEventListener('submit', (e) => {
   div.appendChild(span)
   div.appendChild(para)
 
-  img.setAttribute('src', '../images/icon-cross.svg')
+  img.setAttribute('src', iconCross)
   img.setAttribute('alt', '')
   img.classList.add('close-icon')
 
   img.addEventListener('click', () => {
     const toDoList = document.querySelector('.todo__list')
     toDoList.removeChild(img.parentElement)
+    toDoArr.splice(index, 1)
+    localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
     displayRemainingToDo()
   })
 
