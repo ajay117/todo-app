@@ -34,7 +34,7 @@ elemObj().form.addEventListener('submit', (e) => {
   e.preventDefault()
 
   const input = document.querySelector('input')
-  
+
   addToDo(input.value, toDoArr.length)
   toDoArr.push(input.value)
   localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
