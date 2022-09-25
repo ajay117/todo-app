@@ -34,10 +34,7 @@ const addToDo = (todoStr, index) => {
 
   img.addEventListener('click', () => {
     const toDoList = document.querySelector('.todo__list')
-    // toDoList.removeChild(img.parentElement)
-    // console.log(toDoArr)
     spliceToDoArr(index, 1)
-    // console.log(toDoArr)
     localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
 
     toDoList.innerHTML = ''
