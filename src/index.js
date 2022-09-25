@@ -17,8 +17,6 @@ const sunImage = document.querySelector('#theme__light')
 moonImage.setAttribute('src', moonIcon)
 sunImage.setAttribute('src', sunIcon)
 
-
-
 // Remove hide class from list
 const showList = () => {
   const allSpanArr = [...document.querySelectorAll('li span')]
@@ -67,37 +65,6 @@ form.addEventListener('submit', (e) => {
   li.appendChild(div)
   li.appendChild(img)
   li.setAttribute('draggable', true)
-
-  // Drag and Drop-------------------------
-
-  // function handleDragStart(elem) {
-  //   this.style.opacity = '0.4'
-  //   // console.log(e.target)
-  // }
-
-  // function handleDragEnd(elem) {
-  //   this.style.opacity = '1'
-  //   console.log(this);
-  // }
-
-  // function handleDragOver(elem) {
-  //   elem.preventDefault()
-  //   return false
-  // }
-
-  // function handleDragEnter() {
-  //   console.log(this, 'enter')
-  //   this.classList.add('over')
-  // }
-
-  // li.addEventListener('dragstart', handleDragStart)
-  // li.addEventListener('dragover', handleDragOver)
-  // li.addEventListener('dragenter', handleDragEnter)
-  // li.addEventListener('dragend', handleDragEnd)
-
-  // li.addEventListener
-
-  // --------------------------------------------------
 
   ul.appendChild(li)
 
