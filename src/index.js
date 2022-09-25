@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
     sibling.after(todoStatus)
   }
 
-  toDoArr.forEach((todo) => addToDo(todo))
+  toDoArr.forEach((todo, index) => addToDo(todo, index))
 })
 
 window.addEventListener('resize', () => {
