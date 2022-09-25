@@ -1,7 +1,8 @@
 import './styles.css'
-import checkIcon from '../images/icon-check.svg'
 import moonIcon from '../images/icon-moon.svg'
 import sunIcon from '../images/icon-sun.svg'
+import displayRemainingToDo from './modules/displayRemainingToDo'
+import todoCompleteCheck from './modules/todoCompleteCheck'
 
 const form = document.querySelector('form')
 const clearCompletedBtn = document.querySelector('.js-clear-completed')
@@ -16,51 +17,7 @@ const sunImage = document.querySelector('#theme__light')
 moonImage.setAttribute('src', moonIcon)
 sunImage.setAttribute('src', sunIcon)
 
-// Code to know and render how many items are left
-const displayRemainingTODo = () => {
-  const li = [...document.querySelectorAll('li')]
-  const completedClass = document.querySelectorAll('.completed')
-  const itemsLeft = document.querySelector('.items__left')
-  const remainingToDo = li.length - completedClass.length
-  itemsLeft.textContent =
-    remainingToDo > 1 ? `${remainingToDo} items` : `${remainingToDo} item`
-}
 
-// code when a todo is complete
-const todoCompleteCheck = () => {
-  const allSpanArr = [...document.querySelectorAll('li span')]
-
-  allSpanArr.forEach((span) => {
-    const checkToDo = () => {
-      if (!span.classList.contains('completed')) {
-        const img = document.createElement('img')
-        const siblingPara = span.nextElementSibling
-        span.classList.add('completed')
-
-        img.setAttribute('src', checkIcon)
-        img.setAttribute('alt', '')
-
-        span.appendChild(img)
-        siblingPara.classList.add('todo__complete')
-      } else {
-        const img = span.querySelector('img')
-        const siblingPara = span.nextElementSibling
-
-        span.classList.remove('completed')
-        span.removeChild(img)
-
-        siblingPara.classList.remove('todo__complete')
-      }
-    }
-
-    if (!span.getAttribute('data-listener')) {
-      span.addEventListener('click', checkToDo)
-      span.addEventListener('click', displayRemainingTODo)
-      span.setAttribute('data-listener', true)
-    }
-  })
-  displayRemainingTODo()
-}
 
 // Remove hide class from list
 const showList = () => {
@@ -104,7 +61,7 @@ form.addEventListener('submit', (e) => {
   img.addEventListener('click', () => {
     const toDoList = document.querySelector('.todo__list')
     toDoList.removeChild(img.parentElement)
-    displayRemainingTODo()
+    displayRemainingToDo()
   })
 
   li.appendChild(div)
@@ -151,7 +108,7 @@ form.addEventListener('submit', (e) => {
   completedToDo.classList.remove('active')
 
   todoCompleteCheck()
-  displayRemainingTODo()
+  displayRemainingToDo()
   showList()
 })
 
