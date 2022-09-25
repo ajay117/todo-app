@@ -213,3 +213,12 @@ a.active {
 .hide {
   display: none;
 }
+
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 12px;
+  }
+  input {
+    font-size: 12px;
+  }
+}
