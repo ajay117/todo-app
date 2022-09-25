@@ -3,7 +3,7 @@ import displayRemainingToDo from './displayRemainingToDo'
 import todoCompleteCheck from './todoCompleteCheck'
 import showList from './showList'
 import elemObj from './elemObj'
-import toDoArr from './toDoArr'
+import { toDoArr, spliceToDoArr } from './toDoArr'
 
 const addToDo = (todoStr, index) => {
   const ul = document.querySelector('ul')
@@ -34,9 +34,14 @@ const addToDo = (todoStr, index) => {
 
   img.addEventListener('click', () => {
     const toDoList = document.querySelector('.todo__list')
-    toDoList.removeChild(img.parentElement)
-    toDoArr.splice(index, 1)
+    // toDoList.removeChild(img.parentElement)
+    // console.log(toDoArr)
+    spliceToDoArr(index, 1)
+    // console.log(toDoArr)
     localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
+
+    toDoList.innerHTML = ''
+    toDoArr.forEach((item, i) => addToDo(item, i))
     displayRemainingToDo()
   })
 

@@ -1,3 +1,7 @@
 const toDoArr = JSON.parse(localStorage.getItem('to-do-list')) || []
 
-export default toDoArr
+const spliceToDoArr = (index, removeNum) => {
+  toDoArr.splice(index, removeNum)
+}
+
+export { toDoArr, spliceToDoArr }

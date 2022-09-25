@@ -1,14 +1,13 @@
 import './styles.css'
 import moonIcon from '../images/icon-moon.svg'
 import sunIcon from '../images/icon-sun.svg'
-import displayRemainingToDo from './modules/displayRemainingToDo'
-import todoCompleteCheck from './modules/todoCompleteCheck'
-import iconCross from '../images/icon-cross.svg'
+// import displayRemainingToDo from './modules/displayRemainingToDo'
+// import todoCompleteCheck from './modules/todoCompleteCheck'
+// import iconCross from '../images/icon-cross.svg'
 import elemObj from './modules/elemObj'
 import showList from './modules/showList'
-import toDoArr from './modules/toDoArr'
+import { toDoArr } from './modules/toDoArr'
 import addToDo from './modules/addToDo'
-
 
 elemObj().moonImage.setAttribute('src', moonIcon)
 elemObj().sunImage.setAttribute('src', sunIcon)
@@ -41,60 +40,68 @@ elemObj().form.addEventListener('submit', (e) => {
   e.preventDefault()
 
   const input = document.querySelector('input')
-  const ul = document.querySelector('ul')
-  const div = document.createElement('div')
-  const li = document.createElement('li')
-  const span = document.createElement('span')
-  const para = document.createElement('p')
-  const img = document.createElement('img')
-  const index = toDoArr.length
+  // const ul = document.querySelector('ul')
+  // const div = document.createElement('div')
+  // const li = document.createElement('li')
+  // const span = document.createElement('span')
+  // const para = document.createElement('p')
+  // const img = document.createElement('img')
+  // let index = toDoArr.length
 
-  span.classList.add('circle')
-  para.textContent = input.value
+  // span.classList.add('circle')
+  // para.textContent = input.value
+
+  // if (document.querySelector('#theme__dark').classList.contains('hide')) {
+  //   span.addEventListener('mousedown', () => {
+  //     span.style.borderColor = 'hsl(234, 39%, 85%)'
+  //   })
+  //   span.addEventListener('mouseup', () => {
+  //     span.style.borderColor = ''
+  //   })
+  // }
+
+  // div.appendChild(span)
+  // div.appendChild(para)
+
+  // img.setAttribute('src', iconCross)
+  // img.setAttribute('alt', '')
+  // img.classList.add('close-icon')
+
+  // // Push to array and save in localStorage
+  // toDoArr.push(input.value)
+  // localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
+
+  // img.addEventListener('click', () => {
+  //   const toDoList = document.querySelector('.todo__list')
+  //   toDoList.removeChild(img.parentElement)
+  //   // console.log(toDoArr.splice(toDoArr.length - 1, 1))
+  //   toDoArr.splice(index, 1)
+  //   localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
+  //   displayRemainingToDo()
+  // })
+
+  // li.appendChild(div)
+  // li.appendChild(img)
+  // li.setAttribute('draggable', true)
+
+  // ul.appendChild(li)
+
+  // input.value = ''
+
+  // elemObj().allToDo.classList.add('active')
+  // elemObj().activeToDo.classList.remove('active')
+  // elemObj().completedToDo.classList.remove('active')
+
+  // todoCompleteCheck()
+  // displayRemainingToDo()
+  // showList()
 
   // Push to array and save in localStorage
+  addToDo(input.value, toDoArr.length)
   toDoArr.push(input.value)
   localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
 
-  if (document.querySelector('#theme__dark').classList.contains('hide')) {
-    span.addEventListener('mousedown', () => {
-      span.style.borderColor = 'hsl(234, 39%, 85%)'
-    })
-    span.addEventListener('mouseup', () => {
-      span.style.borderColor = ''
-    })
-  }
-
-  div.appendChild(span)
-  div.appendChild(para)
-
-  img.setAttribute('src', iconCross)
-  img.setAttribute('alt', '')
-  img.classList.add('close-icon')
-
-  img.addEventListener('click', () => {
-    const toDoList = document.querySelector('.todo__list')
-    toDoList.removeChild(img.parentElement)
-    toDoArr.splice(index, 1)
-    localStorage.setItem('to-do-list', JSON.stringify(toDoArr))
-    displayRemainingToDo()
-  })
-
-  li.appendChild(div)
-  li.appendChild(img)
-  li.setAttribute('draggable', true)
-
-  ul.appendChild(li)
-
   input.value = ''
-
-  elemObj().allToDo.classList.add('active')
-  elemObj().activeToDo.classList.remove('active')
-  elemObj().completedToDo.classList.remove('active')
-
-  todoCompleteCheck()
-  displayRemainingToDo()
-  showList()
 })
 
 elemObj().clearCompletedBtn.addEventListener('click', () => {
