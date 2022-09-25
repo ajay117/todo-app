@@ -4,18 +4,42 @@ import sunIcon from '../images/icon-sun.svg'
 import displayRemainingToDo from './modules/displayRemainingToDo'
 import todoCompleteCheck from './modules/todoCompleteCheck'
 
-const form = document.querySelector('form')
-const clearCompletedBtn = document.querySelector('.js-clear-completed')
-const allToDo = document.querySelector('.all__todo')
-const activeToDo = document.querySelector('.active__todo')
-const completedToDo = document.querySelector('.completed__todo')
-const darkTheme = document.querySelector('#theme__dark')
-const lightTheme = document.querySelector('#theme__light')
-const moonImage = document.querySelector('#theme__dark')
-const sunImage = document.querySelector('#theme__light')
+const elemObj = (() => {
+  const form = document.querySelector('form')
+  const clearCompletedBtn = document.querySelector('.js-clear-completed')
+  const allToDo = document.querySelector('.all__todo')
+  const activeToDo = document.querySelector('.active__todo')
+  const completedToDo = document.querySelector('.completed__todo')
+  const darkTheme = document.querySelector('#theme__dark')
+  const lightTheme = document.querySelector('#theme__light')
+  const moonImage = document.querySelector('#theme__dark')
+  const sunImage = document.querySelector('#theme__light')
 
-moonImage.setAttribute('src', moonIcon)
-sunImage.setAttribute('src', sunIcon)
+  return {
+    form,
+    clearCompletedBtn,
+    allToDo,
+    activeToDo,
+    completedToDo,
+    darkTheme,
+    lightTheme,
+    moonImage,
+    sunImage,
+  }
+})()
+
+// const form = document.querySelector('form')
+// const clearCompletedBtn = document.querySelector('.js-clear-completed')
+// const allToDo = document.querySelector('.all__todo')
+// const activeToDo = document.querySelector('.active__todo')
+// const completedToDo = document.querySelector('.completed__todo')
+// const darkTheme = document.querySelector('#theme__dark')
+// const lightTheme = document.querySelector('#theme__light')
+// const moonImage = document.querySelector('#theme__dark')
+// const sunImage = document.querySelector('#theme__light')
+
+elemObj.moonImage.setAttribute('src', moonIcon)
+elemObj.sunImage.setAttribute('src', sunIcon)
 
 // Remove hide class from list
 const showList = () => {
@@ -25,8 +49,29 @@ const showList = () => {
   })
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.innerWidth > 800) {
+    const todoStatus = document.querySelector('.todo__status')
+    const sibling = document.querySelector('.js-place-after')
+    sibling.after(todoStatus)
+  }
+})
+
+window.addEventListener('resize', () => {
+  // console.log(window.innerWidth)
+  if (window.innerWidth > 800) {
+    const todoStatus = document.querySelector('.todo__status')
+    const sibling = document.querySelector('.js-place-after')
+    sibling.after(todoStatus)
+  } else {
+    const sibling = document.querySelector('.todo__info')
+    const todoStatus = document.querySelector('.todo__status')
+    sibling.parentElement.appendChild(todoStatus)
+  }
+})
+
 // Runs on form submit
-form.addEventListener('submit', (e) => {
+elemObj.form.addEventListener('submit', (e) => {
   e.preventDefault()
 
   const input = document.querySelector('input')
@@ -70,16 +115,16 @@ form.addEventListener('submit', (e) => {
 
   input.value = ''
 
-  allToDo.classList.add('active')
-  activeToDo.classList.remove('active')
-  completedToDo.classList.remove('active')
+  elemObj.allToDo.classList.add('active')
+  elemObj.activeToDo.classList.remove('active')
+  elemObj.completedToDo.classList.remove('active')
 
   todoCompleteCheck()
   displayRemainingToDo()
   showList()
 })
 
-clearCompletedBtn.addEventListener('click', () => {
+elemObj.clearCompletedBtn.addEventListener('click', () => {
   const completedToDos = [...document.querySelectorAll('.completed')]
   completedToDos.forEach((todo) => {
     const toDoList = document.querySelector('.todo__list')
@@ -87,10 +132,10 @@ clearCompletedBtn.addEventListener('click', () => {
   })
 })
 
-activeToDo.addEventListener('click', () => {
-  activeToDo.classList.add('active')
-  allToDo.classList.remove('active')
-  completedToDo.classList.remove('active')
+elemObj.activeToDo.addEventListener('click', () => {
+  elemObj.activeToDo.classList.add('active')
+  elemObj.allToDo.classList.remove('active')
+  elemObj.completedToDo.classList.remove('active')
 
   const allSpanArr = [...document.querySelectorAll('li span')]
   allSpanArr.forEach((span) => {
@@ -102,10 +147,10 @@ activeToDo.addEventListener('click', () => {
   })
 })
 
-completedToDo.addEventListener('click', () => {
-  completedToDo.classList.add('active')
-  allToDo.classList.remove('active')
-  activeToDo.classList.remove('active')
+elemObj.completedToDo.addEventListener('click', () => {
+  elemObj.completedToDo.classList.add('active')
+  elemObj.allToDo.classList.remove('active')
+  elemObj.activeToDo.classList.remove('active')
 
   const allSpanArr = [...document.querySelectorAll('li span')]
   allSpanArr.forEach((span) => {
@@ -117,16 +162,16 @@ completedToDo.addEventListener('click', () => {
   })
 })
 
-allToDo.addEventListener('click', () => {
-  allToDo.classList.add('active')
-  activeToDo.classList.remove('active')
-  completedToDo.classList.remove('active')
+elemObj.allToDo.addEventListener('click', () => {
+  elemObj.allToDo.classList.add('active')
+  elemObj.activeToDo.classList.remove('active')
+  elemObj.completedToDo.classList.remove('active')
 
   showList()
 })
 
-// Dark theme
-darkTheme.addEventListener('click', () => {
+// ------------Themes------------
+elemObj.darkTheme.addEventListener('click', () => {
   document.querySelector('#theme__dark').classList.add('hide')
   document.querySelector('#theme__light').classList.remove('hide')
 
@@ -156,7 +201,7 @@ darkTheme.addEventListener('click', () => {
   input.style.backgroundColor = 'hsl(235, 24%, 19%)'
 })
 
-lightTheme.addEventListener('click', () => {
+elemObj.lightTheme.addEventListener('click', () => {
   document.querySelector('#theme__light').classList.add('hide')
   document.querySelector('#theme__dark').classList.remove('hide')
 
@@ -174,25 +219,4 @@ lightTheme.addEventListener('click', () => {
   toDoInfo.style.color = ''
   toDoInfoLink.style.color = ''
   input.style.backgroundColor = ''
-})
-
-window.addEventListener('DOMContentLoaded', () => {
-  if (window.innerWidth > 800) {
-    const todoStatus = document.querySelector('.todo__status')
-    const sibling = document.querySelector('.js-place-after')
-    sibling.after(todoStatus)
-  }
-})
-
-window.addEventListener('resize', () => {
-  // console.log(window.innerWidth)
-  if (window.innerWidth > 800) {
-    const todoStatus = document.querySelector('.todo__status')
-    const sibling = document.querySelector('.js-place-after')
-    sibling.after(todoStatus)
-  } else {
-    const sibling = document.querySelector('.todo__info')
-    const todoStatus = document.querySelector('.todo__status')
-    sibling.parentElement.appendChild(todoStatus)
-  }
 })
