@@ -71,4 +71,4 @@ Later want to do some code refactor and add some drag and drop to reorder list.
 
 - Website - [Ajay KC](https://github.com/ajay117)
 - Frontend Mentor - [@ajay117](https://www.frontendmentor.io/profile/ajay117)
-- Twitter - [@Ajay49903701](https://www.twitter.com/Ajay49903701)
+- Twitter - [@AjayInTech](https://www.twitter.com/AjayInTech)
